@@ -11,15 +11,14 @@ function MovieDetailsPage() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const navigate = useNavigate();
-  const location = useLocation();  
-  const backLink = location.state?.from || '/';
+  const location = useLocation();
+
+  const backLink = location.state?.from || '/movies';
 
   useEffect(() => {
     axios
       .get(`${BASE_URL}/movie/${movieId}`, {
-        headers: {
-          Authorization: `Bearer ${API_KEY}`,
-        },
+        headers: { Authorization: `Bearer ${API_KEY}` },
       })
       .then(response => setMovie(response.data))
       .catch(err => console.error(err));
@@ -37,7 +36,7 @@ function MovieDetailsPage() {
         <li>
           <NavLink
             className={({ isActive }) => clsx(styles.movieLink, { [styles.active]: isActive })}
-            to={`cast`}
+            to={`/movies/${movieId}/cast`}
             state={{ from: backLink }}
           >
             Cast
@@ -46,7 +45,7 @@ function MovieDetailsPage() {
         <li>
           <NavLink
             className={({ isActive }) => clsx(styles.movieLink, { [styles.active]: isActive })}
-            to={`reviews`}
+            to={`/movies/${movieId}/reviews`}
             state={{ from: backLink }}
           >
             Reviews
