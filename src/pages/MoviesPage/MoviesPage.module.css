@@ -1,0 +1,33 @@
+.moviesPage {
+    padding: 20px;
+}
+
+.pageTitle {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.searchForm {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.searchInput {
+    flex-grow: 1;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.searchButton {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
