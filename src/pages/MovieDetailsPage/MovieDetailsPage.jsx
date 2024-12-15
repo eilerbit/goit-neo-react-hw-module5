@@ -11,8 +11,8 @@ function MovieDetailsPage() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const navigate = useNavigate();
-  const location = useLocation();
-  const backLink = location.state?.from || '/movies';
+  const location = useLocation();  
+  const backLink = location.state?.from || '/';
 
   useEffect(() => {
     axios
@@ -34,8 +34,24 @@ function MovieDetailsPage() {
       <img className={styles.moviePoster} src={`${IMAGE_BASE_URL}${movie.poster_path}`} alt={movie.title} />
       <p className={styles.movieOverview}>{movie.overview}</p>
       <ul className={styles.movieLinks}>
-        <li><NavLink className={({ isActive }) => clsx(styles.movieLink, { [styles.active]: isActive })} to={`/movies/${movieId}/cast`}>Cast</NavLink></li>
-        <li><NavLink className={({ isActive }) => clsx(styles.movieLink, { [styles.active]: isActive })} to={`/movies/${movieId}/reviews`}>Reviews</NavLink></li>
+        <li>
+          <NavLink
+            className={({ isActive }) => clsx(styles.movieLink, { [styles.active]: isActive })}
+            to={`cast`}
+            state={{ from: backLink }}
+          >
+            Cast
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            className={({ isActive }) => clsx(styles.movieLink, { [styles.active]: isActive })}
+            to={`reviews`}
+            state={{ from: backLink }}
+          >
+            Reviews
+          </NavLink>
+        </li>
       </ul>
       <Routes>
         <Route path="cast" element={<MovieCast />} />
