@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation/Navigation';
 import './App.css'
 
@@ -9,8 +9,7 @@ const MovieDetailsPage = lazy(() => import('./pages/MovieDetailsPage/MovieDetail
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
 function App() {
-  return (
-    <Router>
+  return (   
       <div className="App">
         <Navigation />
         <Suspense fallback={<p>Loading...</p>}>
@@ -21,8 +20,7 @@ function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
-      </div>
-    </Router>
+      </div>    
   );
 }
 
